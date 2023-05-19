@@ -9,35 +9,60 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+', '-', '^', '@']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
+# # Easy way
+# password = ""
+#
+# print("Welcome to the PyPassword Generator!\n")
+#
+# letters_num = int(input("How many letters would you like in your password?\n"))
+# for temp in range(0, letters_num):
+#     random_letters = random.choice(letters)  # choice(): give you random letters list
+#     password += random_letters
+#
+# symbols_num = int(input("How many symbols would you like?\n"))
+# for temp in range(0, symbols_num):
+#     random_symbols = random.choice(symbols)
+#     password += random_symbols
+#
+# numbers_num = int(input("How many numbers would you like?\n"))
+# for temp in range(0, numbers_num):
+#     random_numbers = random.choice(numbers)
+#     password += random_numbers
+#
+# print(password)
+
+# Hard way
+password_list = []
 
 print("Welcome to the PyPassword Generator!\n")
 
 letters_num = int(input("How many letters would you like in your password?\n"))
 for temp in range(0, letters_num):
-    random_letter = random.randint(0, letters_num)
-
-    letters_result = letters[random_letter]
-    print(letters_result, end='')
-print("\n")
+    random_letters = random.choice(letters)  # choice(): give you random letters list
+    # password_list += random_letters  # it's working as well
+    password_list.append(random_letters)
 
 symbols_num = int(input("How many symbols would you like?\n"))
 for temp in range(0, symbols_num):
-    random_symbol = random.randint(0, symbols_num)
-
-    symbols_result = symbols[random_symbol]
-    print(symbols_result, end='')
-print("\n")
+    random_symbols = random.choice(symbols)
+    # password_list += random_symbols
+    password_list.append(random_symbols)
 
 numbers_num = int(input("How many numbers would you like?\n"))
 for temp in range(0, numbers_num):
-    random_number = random.randint(0, numbers_num)
+    random_numbers = random.choice(numbers)
+    # password_list += random_numbers
+    password_list.append(random_numbers)
 
-    numbers_result = numbers[random_number]
-    print(numbers_result, end='')
-print("\n")
+print(password_list)
+random.shuffle(password_list)  # random elements in list
+print(password_list)
 
-final_result = letters_result + symbols_result + numbers_result
-print(final_result)
+password = ""
+for temp in password_list:
+    password += temp
+print(password)
 
-
-
+# for temp in range(0, len(password_list)):
+#     random_password = random.choice(password_list)
+#     print(random_password, end='')
